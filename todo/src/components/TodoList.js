@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import {reducer, initialState} from '../reducers/Reducer'
 
+import Todo from './Todo'
+
 
 
 // const initialState = {
@@ -19,6 +21,9 @@ const TodoList = () =>{
     return(
         <div>
             <h2>My List</h2>
+            {state.map(todo=>{
+                return <Todo todo={todo} />
+            })}
         </div>
 
     )
