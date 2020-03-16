@@ -1,25 +1,21 @@
-import React, { useReducer } from "react";
-import {reducer, initialState} from '../reducers/Reducer'
+import React, { useReducer, useState } from "react";
+import {reducer, initialState} from '../reducers/Reducer';
 
-import Todo from './Todo'
+import TodoForm from './TodoForm';
+import Todo from './Todo';
 
-
-
-// const initialState = {
-//     item: 'Learn about reducers',
-//     completed: false,
-//     id: 0
-// }
-
-// const reducer = (state, action) =>{
-//     return state;
-// }
 
 const TodoList = () =>{
     const [state, dispatch] = useReducer(reducer, initialState)
-    console.log(state)
+    const [newTodo, setNewTodo] = useState('')
+    const handleChanges = e =>{
+        setNewTodo(e.target.value);
+    }
+    // console.log('rendered',state)
+    
     return(
         <div>
+            <TodoForm dispatch={dispatch} handleChanges={handleChanges} newTodo={newTodo}/>
             <h2>My List</h2>
             {state.map(todo=>{
                 return <Todo todo={todo} />
