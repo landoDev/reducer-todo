@@ -1,12 +1,13 @@
-const reducer = (state, action) =>{
-    return state;
-}
-
-const initialState = {
+export const initialState = {
     item: 'Learn about reducers',
     completed: false,
     id: 0
 }
 
-export default reducer
-export default initialState
+export const reducer = (state, action) =>{
+    return state;
+}
+
+
+
+// export default reducer

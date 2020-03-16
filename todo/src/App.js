@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import TodoList from './components/TodoList'
 import './App.css';
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
       <header className="App-header">
         <h1>React Todo w/ Reducer!</h1>
       </header>
+      <TodoList />
     </div>
   );
 }
