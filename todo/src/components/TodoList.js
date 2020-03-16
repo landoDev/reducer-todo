@@ -12,14 +12,26 @@ const TodoList = () =>{
         setNewTodo(e.target.value);
     }
     // console.log('rendered',state)
-    
+    const toggleCompleted = () =>{
+        dispatch({
+            type: 'TOGGLE_COMPLETE'
+        })
+    }
+    console.log(state.items)
     return(
         <div>
             <TodoForm dispatch={dispatch} handleChanges={handleChanges} newTodo={newTodo}/>
             <h2>My List</h2>
             {state.map(todo=>{
-                return <Todo todo={todo} />
+                return(
+                    <div>
+                        <Todo todo={todo} dispatch={dispatch}/>
+                        <input type='checkbox' onClick={toggleCompleted}></input>
+                    </div>
+                    
+                ) 
             })}
+
         </div>
 
     )
