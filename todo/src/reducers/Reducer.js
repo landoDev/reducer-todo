@@ -28,7 +28,7 @@ export const reducer = (state, action) => {
         case 'CLEAR_COMPLETE':
             return{
                 ...state,
-                task: state.filter(task=>{ return !task.completed}) 
+                task: state.task.filter(task=>{ return !task.completed}) 
 
             }
         default:

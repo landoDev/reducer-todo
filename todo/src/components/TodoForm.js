@@ -10,13 +10,8 @@ export default function TodoForm(props){
         <div>
             <label>New To-do: </label>
             <input type='text' placeholder='Input' value={props.newTodo} onChange={props.handleChanges}></input>
-            <button onClick={()=> props.dispatch({
-                type: 'ADD_TODO',
-                payload: props.newTodo
-            })}>Add</button>
-            <button onClick={()=> props.dispatch({
-                type: 'CLEAR_COMPLETED',
-            })}>Clear Completed</button>
+            <button onClick={()=> props.addTodo()}>Add</button>
+            <button onClick={()=> props.clearCompleted()}>Clear Completed</button>
         </div>
     )
 }

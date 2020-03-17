@@ -12,20 +12,26 @@ const TodoList = () =>{
         setNewTodo(e.target.value);
     }
     console.log('rendered',state)
+    const addTodo = () =>{
+        dispatch({
+            type: 'ADD_TODO',
+            payload: newTodo
+        })
+    }
     const toggleCompleted = (id) =>{
         dispatch({
             type: 'TOGGLE_COMPLETE',
             id: id
         })
     }
-    // const clearCompleted = (id) =>{
-    //     dispatch({
-    //         type: 'CLEAR_COMPLETED',
-    //     })
-    // }
+    const clearCompleted = () =>{
+        dispatch({
+            type: 'CLEAR_COMPLETED',
+        })
+    }
     return(
         <div>
-            <TodoForm dispatch={dispatch} handleChanges={handleChanges} newTodo={newTodo}/>
+            <TodoForm addTodo={addTodo} handleChanges={handleChanges} clearCompleted={clearCompleted} newTodo={newTodo}/>
             <h2>My List</h2>
             {state.map(todo=>{
                 return(
