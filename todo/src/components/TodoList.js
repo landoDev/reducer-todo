@@ -11,13 +11,13 @@ const TodoList = () =>{
     const handleChanges = e =>{
         setNewTodo(e.target.value);
     }
-    // console.log('rendered',state)
-    const toggleCompleted = () =>{
+    console.log('rendered',state)
+    const toggleCompleted = (id) =>{
         dispatch({
-            type: 'TOGGLE_COMPLETE'
+            type: 'TOGGLE_COMPLETE',
+            id: id
         })
     }
-    console.log(state.items)
     return(
         <div>
             <TodoForm dispatch={dispatch} handleChanges={handleChanges} newTodo={newTodo}/>
@@ -25,8 +25,8 @@ const TodoList = () =>{
             {state.map(todo=>{
                 return(
                     <div>
-                        <Todo todo={todo} dispatch={dispatch}/>
-                        <input type='checkbox' onClick={toggleCompleted}></input>
+                        <Todo todo={todo} />
+                        <input type='checkbox' onClick={()=> toggleCompleted(todo.id)}></input>
                     </div>
                     
                 ) 

@@ -1,12 +1,10 @@
 import React from 'react';
 
-export default function Todo(props){
-    console.log('todo props', props)
-    console.log('todo props', props.todo)
+export default function Todo({todo}){
     return(
         <div>
 
-            <p className={props.todo.completed ? 'completed-item' : 'incomplete'} >{props.todo.item}</p>
+            <p className={todo.completed ? 'completed-item' : 'incomplete'} >{todo.task}</p>
 
         </div>
     )

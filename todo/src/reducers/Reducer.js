@@ -1,6 +1,6 @@
 export const initialState = [{
-    item: 'Learn about reducers',
-    completed: false,
+    task: 'Lean Reducer', 
+    completed: false, 
     id: 0
 }]
 
@@ -8,11 +8,22 @@ export const reducer = (state, action) => {
     console.log('Action', action)
     switch(action.type){
         case 'ADD_TODO':
-            return [...state, {item: action.payload, completed: false, id: new Date()}]
+            let newTodo = {
+                task: action.payload,
+                completed: false,
+                id: Date.now() 
+            }
+            return [...state, newTodo]
         case 'TOGGLE_COMPLETE':
-            state.forEach(element => {
-                console.log(element)
-              return element.completed = true;
+            return state.map(task=>{
+                if(task.id === action.id){
+                    return{
+                        ...task,
+                        completed: !task.completed
+                    }
+                }else{
+                    return task
+                }
             });
         default:
             return state;
