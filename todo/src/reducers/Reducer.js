@@ -45,16 +45,19 @@ export const reducer = (state, action) => {
                 return task
                 }
                 }
-                )}
+                )
+            }
         case 'CLEAR_COMPLETE':
             console.log('clear button triggered', action)
             return{
                 ...state,
-                task: state.task.filter(task=>{ 
-                    return !task.completed
+                todo: state.todo.filter(task=>{ 
+                    return task.completed === !task.completed
                 }) 
-
             }
+
+
+           
         default:
             return state;
     }

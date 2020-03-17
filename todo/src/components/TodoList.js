@@ -12,11 +12,13 @@ const TodoList = () =>{
         setNewTodo(e.target.value);
     }
     
-    const addTodo = () =>{
+    const addTodo = e =>{
+        e.preventDefault();
         dispatch({
             type: 'ADD_TODO',
             payload: newTodo
         })
+        setNewTodo('')
     }
     const toggleCompleted = (id) =>{
         dispatch({
@@ -25,9 +27,10 @@ const TodoList = () =>{
         })
     }
     const clearCompleted = e =>{
+        console.log('clearCompleted is hit')
         e.preventDefault();
         dispatch({
-            type: 'CLEAR_COMPLETED',
+            type: 'CLEAR_COMPLETED'
         })
     }
     console.log('current state',state)
