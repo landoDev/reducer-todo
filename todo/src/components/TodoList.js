@@ -11,7 +11,7 @@ const TodoList = () =>{
     const handleChanges = e =>{
         setNewTodo(e.target.value);
     }
-    console.log('rendered',state)
+    
     const addTodo = () =>{
         dispatch({
             type: 'ADD_TODO',
@@ -21,19 +21,21 @@ const TodoList = () =>{
     const toggleCompleted = (id) =>{
         dispatch({
             type: 'TOGGLE_COMPLETE',
-            id: id
+            payload: id
         })
     }
-    const clearCompleted = () =>{
+    const clearCompleted = e =>{
+        e.preventDefault();
         dispatch({
             type: 'CLEAR_COMPLETED',
         })
     }
+    console.log('current state',state)
     return(
         <div>
             <TodoForm addTodo={addTodo} handleChanges={handleChanges} clearCompleted={clearCompleted} newTodo={newTodo}/>
             <h2>My List</h2>
-            {state.map(todo=>{
+            {state.todo.map(todo=>{
                 return(
                     <div>
                         <Todo todo={todo} />

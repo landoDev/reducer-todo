@@ -1,34 +1,58 @@
-export const initialState = [{
-    task: 'Lean Reducer', 
-    completed: false, 
-    id: 0
-}]
+export const initialState = {
+    todo: [{
+        task: 'Lean Reducer', 
+        completed: false, 
+        id: 0
+    }]
+}
 
 export const reducer = (state, action) => {
     console.log('Action', action)
+    // console.log('current state', state.todo)
     switch(action.type){
+        
         case 'ADD_TODO':
-            let newTodo = {
-                task: action.payload,
-                completed: false,
-                id: Date.now() 
-            }
-            return [...state, newTodo]
-        case 'TOGGLE_COMPLETE':
-            return state.map(task=>{
-                if(task.id === action.id){
-                    return{
-                        ...task,
-                        completed: !task.completed
+            // console.log(action.payload)
+            // console.log('state on todo action', state.todo)
+            // let newTodo = {
+            //     task: action.payload,
+            //     completed: false,
+            //     id: Date.now() 
+            // }
+            return {
+                ...state,
+                todo: [
+                    ...state.todo,
+                    {
+                        task: action.payload,
+                        completed: false,
+                        id: Date.now()
                     }
-                }else{
-                    return task
+                ]
+            }
+            // return [...state.todo, newTodo]
+        case 'TOGGLE_COMPLETE':  
+            return {
+                ...state,
+                todo: state.todo.map((task) => {
+                if (task.id === action.payload) {
+                return {
+                    ...task,
+                    completed: !task.completed
                 }
-            });
+                }
+                else {
+                return task
+                }
+                }
+                )}
         case 'CLEAR_COMPLETE':
+            console.log('clear button triggered', action)
             return{
                 ...state,
-                task: state.task.filter(task=>{ return !task.completed}) 
+                task: state.task.filter(task=>{ 
+                    return !task.completed
+                }) 
 
             }
         default:
