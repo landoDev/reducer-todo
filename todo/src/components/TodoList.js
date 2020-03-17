@@ -18,6 +18,11 @@ const TodoList = () =>{
             id: id
         })
     }
+    // const clearCompleted = (id) =>{
+    //     dispatch({
+    //         type: 'CLEAR_COMPLETED',
+    //     })
+    // }
     return(
         <div>
             <TodoForm dispatch={dispatch} handleChanges={handleChanges} newTodo={newTodo}/>

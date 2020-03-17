@@ -5,7 +5,7 @@ import React from 'react';
 // }
 
 export default function TodoForm(props){
-    // console.log('form props', props)
+    console.log('form props', props)
     return(
         <div>
             <label>New To-do: </label>
@@ -14,6 +14,9 @@ export default function TodoForm(props){
                 type: 'ADD_TODO',
                 payload: props.newTodo
             })}>Add</button>
+            <button onClick={()=> props.dispatch({
+                type: 'CLEAR_COMPLETED',
+            })}>Clear Completed</button>
         </div>
     )
 }
